@@ -19,23 +19,23 @@ int main() {
     int opt = 1;
     setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
     
-    // Bind to port 8080
+    // Bind to port 9090
     struct sockaddr_in address;
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(8080);
+    address.sin_port = htons(9090);
     
     if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
-        std::cerr << "ERROR: Failed to bind to port 8080" << std::endl;
+        std::cerr << "ERROR: Failed to bind to port 9090" << std::endl;
         return 1;
     }
     
     if (listen(server_fd, 10) < 0) {
-        std::cerr << "ERROR: Failed to listen on port 8080" << std::endl;
+        std::cerr << "ERROR: Failed to listen on port 9090" << std::endl;
         return 1;
     }
     
-    std::cout << "Server listening on port 8080 (hostname: " << hostname << ")" << std::endl;
+    std::cout << "Server listening on port 9090 (hostname: " << hostname << ")" << std::endl;
     
     // Accept connections in loop
     while(true) {
